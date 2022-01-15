@@ -1,6 +1,1 @@
-[
-  { "id": "gdfgdfg", "name": "Alex", "email": "test@gmail.com" },
-  { "id": "1hfoi24gsky8tuavc", "name": "Alex", "email": "test@gmail.com" },
-  { "id": "1hfoi2epcky8txzfj", "name": "Moshe", "email": "moshe@gmail.com" },
-  { "id": "1hfoi2fioky8tz18f", "name": "Avi", "email": "avi@gmail.com" }
-]
+[{"id":"1hfoi24gsky8tuavc","name":"Alex","email":"test@gmail.com"},{"id":"1hfoi2epcky8txzfj","name":"Moshe","email":"moshe@gmail.com"},{"id":"1hfoi2fioky8tz18f","name":"Adin","email":"adina@gmail.com"}]

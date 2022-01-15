@@ -27,44 +27,66 @@ yargs.command({
   },
 });
 
-// Create remove command
 yargs.command({
-  command: "remove",
-  describe: "Remove a note",
+  command: "update",
+  describe: "Update a user",
   builder: {
-    title: {
-      describe: "Note title",
+    id: {
+      describe: "User id",
       demandOption: true,
+      default: "string",
+    },
+    name: {
+      describe: "User Name",
+      demandOption: false,
+      type: "string",
+    },
+    email: {
+      describe: "User Email",
+      demandOption: false,
       type: "string",
     },
   },
   handler(argv) {
-    notes.removeNote(argv.title);
+    users.updateUser(argv.id, argv.name, argv.email);
   },
 });
 
-// Create list command
-yargs.command({
-  command: "list",
-  describe: "List your notes",
-  handler() {
-    notes.listNotes();
-  },
-});
-
-// Create read command
 yargs.command({
   command: "read",
-  describe: "Read a note",
+  describe: "Read user data",
   builder: {
-    title: {
-      describe: "Note title",
+    id: {
+      describe: "User id",
       demandOption: true,
       type: "string",
     },
   },
   handler(argv) {
-    notes.readNote(argv.title);
+    users.readUser(argv.id);
+  },
+});
+
+yargs.command({
+  command: "delete",
+  describe: "delete user",
+  builder: {
+    id: {
+      describe: "User id",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler(argv) {
+    users.deleteUser(argv.id);
+  },
+});
+
+yargs.command({
+  command: "readAll",
+  describe: "Read user data",
+  handler(argv) {
+    users.readUsers(argv.id);
   },
 });
 

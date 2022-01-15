@@ -18,40 +18,60 @@ const createUser = (id, name, email) => {
   }
 };
 
-const removeNote = (title) => {
-  const notes = loadNotes();
-  const notesToKeep = notes.filter((note) => note.title !== title);
+const deleteUser = (id) => {
+  const users = loadUsers();
+  const usersToKeep = users.filter((user) => user.id !== id);
 
-  if (notes.length > notesToKeep.length) {
-    console.log(chalk.green.inverse("Note removed!"));
-    saveNotes(notesToKeep);
+  if (users.length > usersToKeep.length) {
+    console.log(chalk.green.inverse(`User with id ${id} removed!`));
+    saveUsers(usersToKeep);
   } else {
-    console.log(chalk.red.inverse("No note found!"));
+    console.log(chalk.red.inverse(`No user found with id ${id}`));
   }
 };
 
-const listNotes = () => {
-  const notes = loadNotes();
+const updateUser = (id, name, email) => {
+  const users = loadUsers();
+  const user = users.find((user) => user.id === id);
 
-  console.log(chalk.inverse("Your notes"));
+  if (user) {
+    const index = users.findIndex((user) => user.id === id);
+    name ? (user.name = name) : console.log("Name didn't changed");
+    email ? (user.email = email) : console.log("Email didn't changed");
+    users.splice(index, 1, user);
+    console.log(chalk.green.inverse(`User with id ${id} updated!`));
+    console.log("Name is: " + chalk.green.inverse(user.name));
+    console.log("Email is: " + chalk.green.inverse(user.email));
+    saveUsers(users);
+  } else {
+    console.log(chalk.red.inverse(`No user found with id ${id}`));
+  }
+};
 
-  notes.forEach((note) => {
-    console.log(note.title);
+const readUsers = () => {
+  const users = loadUsers();
+
+  console.log(chalk.inverse("All users: "));
+
+  users.forEach((user) => {
+    console.log("id is: " + chalk.inverse(user.id));
+    console.log("Name is: " + chalk.inverse(user.name));
+    console.log("Email is: " + chalk.inverse(user.email));
+    console.log("----------------------------------------------------");
   });
 };
 
-const readNote = (title) => {
-  const notes = loadNotes();
-  const note = notes.find((note) => note.title === title);
-
-  if (note) {
-    console.log(chalk.inverse(note.title));
-    console.log(note.body);
+const readUser = (id) => {
+  const users = loadUsers();
+  const user = users.find((user) => user.id === id);
+  if (user) {
+    console.log("id is: " + chalk.inverse(user.id));
+    console.log("Name is: " + chalk.inverse(user.name));
+    console.log("Email is: " + chalk.inverse(user.email));
   } else {
-    console.log(chalk.red.inverse("Note not found!"));
+    console.log(chalk.red.inverse("User not found!"));
   }
 };
-
 const saveUsers = (users) => {
   const dataJSON = JSON.stringify(users);
   fs.writeFileSync("users.json", dataJSON);
@@ -68,8 +88,9 @@ const loadUsers = () => {
 };
 
 module.exports = {
-  createUser: createUser,
-  removeNote: removeNote,
-  listNotes: listNotes,
-  readNote: readNote,
+  createUser,
+  readUser,
+  readUsers,
+  deleteUser,
+  updateUser,
 };
