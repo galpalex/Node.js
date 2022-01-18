@@ -1,0 +1,15 @@
+{
+  "name": "16.2mongo",
+  "version": "1.0.0",
+  "description": "Backend: MongoDB\r Node JS – Blog Data\r The following exercise contains the following subjects:\r  MongoDB\r Instructions\r Now that we have our schema setup lets start to code!",
+  "main": "mongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.3.0"
+  }
+}
