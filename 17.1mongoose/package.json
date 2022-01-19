@@ -1,0 +1,15 @@
+{
+  "name": "17.1mongoose",
+  "version": "1.0.0",
+  "description": "Backend: MongoDB\r Node JS – Product model\r The following exercise contains the following subjects:\r  mongoose\r Instructions\r Let’s create a mongoose product modelwith validation for\r an e-commerce site.\r The product should have the following:\r  name, a string, which is required and should be\r unique.\r  category, a string, which is required.\r  isActive, a boolean.\r  details, which is an embedded object that includes:\r • a description, a string, which is required and has to\r be at least 10 letters in length.\r • Price, a number, which is required and has to be a\r positive value,\r • discount, a number, which is not required but the\r default is 0 if not inputted.\r • array of images which must include at least two\r images\r • a phone number which is required and has to be a\r valid Israeli phone number.\r • DateAdded, which by default gives the current date\r Add at least 3 products to your database.\r Feel free to add more validation or keys to your model",
+  "main": "mongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.1.7",
+    "validator": "^13.7.0"
+  }
+}
